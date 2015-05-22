@@ -1,5 +1,6 @@
 require_relative 'models/congressman.rb'
 require_relative 'models/state.rb'
+require_relative 'models/tweet.rb'
 require 'twitter'
 require 'nokogiri'
 
@@ -125,10 +126,12 @@ def get_tweet(twitter_id)
 
     @client.user_timeline(twitter_id).take(10).collect do |tweet|
         # tweet = Nokogiri.HTML(tweet.text).text
-        tweet = tweet.text
-
+        tweet_txt = tweet.text
         puts tweet
+        Tweet.create(twitter_id: twitter_id, tweet_id: tweet, text: tweet_txt)
     end
+
+
 end
 
 

@@ -14,7 +14,9 @@ task "db:drop" do
 end
 
 task "console" do
-  exec 'irb -r./app.rb'
+  # exec 'irb -r./app.rb'
+    exec 'irb app/app.rb'
+
 end
 
 desc "migrate the database (options: VERSION=x, VERBOSE=false, SCOPE=blog)."

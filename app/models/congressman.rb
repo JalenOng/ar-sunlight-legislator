@@ -1,7 +1,7 @@
 require_relative '../../db/config'
 
 class Congressman < ActiveRecord::Base
-
+  has_many :tweets
   attr_accessor :name
 
 
