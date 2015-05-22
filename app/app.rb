@@ -122,13 +122,17 @@ def fetch_user
 
 end
 
-def get_tweet(twitter_id)
+def get_tweet(id)
 
-    @client.user_timeline(twitter_id).take(10).collect do |tweet|
+
+    rep = Congressman.where(id: id)
+    raise "Error: This user has no twitter id." if rep.twitter_id.nil?
+
+    @client.user_timeline(rep.twitter_id).take(10).collect do |tweet|
         # tweet = Nokogiri.HTML(tweet.text).text
         tweet_txt = tweet.text
         puts tweet
-        Tweet.create(twitter_id: twitter_id, tweet_id: tweet, text: tweet_txt)
+        Tweet.create(twitter_id: rep.twitter_id, tweet_id: tweet, text: tweet_txt)
     end
 
 

@@ -2,18 +2,17 @@ require_relative '../../db/config'
 
 class Congressman < ActiveRecord::Base
   has_many :tweets
-  attr_accessor :name
+  attr_accessor :name, :twitter_id
 
 
   def name
     "#{firstname}" + " " +"#{lastname}"
   end
 
-  # def self.listrep
-  # # Order.select("date(created_at) as ordered_date, sum(price) as total_price").
-  # # group("date(created_at)").having("sum(price) > ?", 100)
-  #   Congressmen.select(@fullname).group('state').having("title?","Rep")
-  # end
+  def get_twitter_id
+    "#{twitter_id}"
+  end
+
 end
 
 
