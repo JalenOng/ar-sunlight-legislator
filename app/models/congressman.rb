@@ -9,11 +9,12 @@ class Congressman < ActiveRecord::Base
     "#{firstname}" + " " +"#{lastname}"
   end
 
-  def get_twitter_id
-    "#{twitter_id}"
-  end
+  # def get_twitter_id
+  #   "#{twitter_id}"
+  # end
 
 end
+
 
 
 
